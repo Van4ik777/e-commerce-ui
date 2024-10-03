@@ -1,10 +1,15 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { HomePage } from './pages/Home.page';
+import { HomePage } from './components/pages/Home.page';
+import { Pagetext } from './components/pages/Pagetext';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <HomePage />,
+  },
+  {
+    path: '/ewrwerwer',
+    element: <Pagetext/>,
   },
 ]);
 
