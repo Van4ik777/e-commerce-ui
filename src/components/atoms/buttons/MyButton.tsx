@@ -3,18 +3,23 @@ import { Button as MantineButton } from '@mantine/core';
 
 interface ButtonProps {
   label: string;
-  onClick: () => void;
-  mystyles?: React.CSSProperties; 
+  mystyles?: React.CSSProperties;
+  onClick?: () => void;
 }
 
-export const MyButton: React.FC<ButtonProps> = ({ label, onClick, mystyles }) => {
+// TODO: Rename to CustomButton or StyledButton
+
+export const MyButton: React.FC<ButtonProps> = ({ label, mystyles, ...props }) => {
   return (
-    <MantineButton onClick={onClick}      style={{ 
-      backgroundColor: 'rgba(17, 17, 17, 1)',
-      color: 'white', 
-      borderRadius: '0', 
-      ...mystyles 
-    }} >
+    <MantineButton
+      style={{
+        backgroundColor: 'rgba(17, 17, 17, 1)',
+        color: 'white',
+        borderRadius: '0',
+        ...mystyles,
+      }}
+      {...props}
+    >
       {label}
     </MantineButton>
   );

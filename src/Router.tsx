@@ -1,3 +1,4 @@
+// TODO: Move all routes to this file and rename to Routes
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { HomePage } from './components/pages/Home.page';
 import { Pagetext } from './components/pages/Pagetext';

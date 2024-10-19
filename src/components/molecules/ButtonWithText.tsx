@@ -1,5 +1,5 @@
-import { MyButton } from "../atoms/buttons/MyButton";
-import { MyText } from "../atoms/text/MyText";
+import { MyButton } from '../atoms/buttons/MyButton';
+import { MyText } from '../atoms/text/MyText';
 
 interface ButtonWithTextProps {
   label: string;

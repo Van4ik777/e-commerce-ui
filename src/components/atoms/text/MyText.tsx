@@ -1,3 +1,5 @@
+// TODO: Remove this file
+
 import React from 'react';
 import { Text as MantineText } from '@mantine/core';
 

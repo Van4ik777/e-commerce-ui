@@ -1,11 +1,13 @@
+// Remove this file
+
 import React from 'react';
 
 interface ImageProps {
-  src: string;          
-  alt: string;          
-  width?: string;       
-  height?: string;      
-  style?: React.CSSProperties
+  src: string;
+  alt: string;
+  width?: string;
+  height?: string;
+  style?: React.CSSProperties;
 }
 
 export const Image: React.FC<ImageProps> = ({
@@ -15,11 +17,5 @@ export const Image: React.FC<ImageProps> = ({
   height = '100px',
   style = {},
 }) => {
-  return (
-    <img 
-      src={src} 
-      alt={alt} 
-      style={{ width, height, ...style }} 
-    />
-  );
+  return <img src={src} alt={alt} style={{ width, height, ...style }} />;
 };
