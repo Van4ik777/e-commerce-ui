@@ -86,7 +86,7 @@ export const Header: React.FC = () => {
                     <Text
                       style={{
                         fontFamily: 'Roboto',
-                        fontSize: scrolling ? '20px' : '22px', // Зменшуємо розмір шрифту при прокрутці
+                        fontSize: scrolling ? '20px' : '22px',
                         fontWeight: 700,
                         lineHeight: '21.09px',
                         textAlign: 'left',
