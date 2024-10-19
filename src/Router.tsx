@@ -8,7 +8,7 @@ const router = createBrowserRouter([
     element: <HomePage />,
   },
   {
-    path: '/ewrwerwer',
+    path: '/234',
     element: <Pagetext/>,
   },
 ]);
