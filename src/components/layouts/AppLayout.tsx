@@ -7,7 +7,7 @@ export const AppLayout = () => {
   return (
     <>
       <Header />
-      <Box mb={120} />
+      <Box />
       <Outlet />
       <Footer />
     </>

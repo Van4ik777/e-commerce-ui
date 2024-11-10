@@ -1,0 +1,289 @@
+[
+    {
+      "id": 1,
+      "name": "Classic Leather Chair",
+      "categoryId": 1,
+      "price": 299,
+      "discount": 10,
+      "description": "A comfortable and stylish leather chair for your living room.",
+      "images": ["image1.jpg", "image2.jpg"],
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Great quality and very comfortable.",
+          "userId": 2,
+          "productId": 1
+        },
+        {
+          "id": 2,
+          "text": "The leather is soft and luxurious.",
+          "userId": 3,
+          "productId": 1
+        }
+      ],
+      "productDetails": [
+        {
+          "productId": 1,
+          "colors": ["brown", "black"],
+          "materials": ["leather", "wood"],
+          "height": 90,
+          "width": 80,
+          "depth": 75,
+          "swivelMechanism": "No"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Modern Sofa Set",
+      "categoryId": 1,
+      "price": 899,
+      "discount": 15,
+      "description": "A sleek and modern sofa set for contemporary homes.",
+      "images": ["sofa1.jpg", "sofa2.jpg"],
+      "reviews": [
+        {
+          "id": 3,
+          "text": "Perfect for my living room, very cozy.",
+          "userId": 4,
+          "productId": 2
+        }
+      ],
+      "productDetails": [
+        {
+          "productId": 2,
+          "colors": ["grey", "beige"],
+          "materials": ["fabric", "metal"],
+          "height": 85,
+          "width": 200,
+          "depth": 90,
+          "swivelMechanism": "No"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Wooden Dining Table",
+      "categoryId": 2,
+      "price": 499,
+      "discount": 5,
+      "description": "A large wooden dining table perfect for family gatherings.",
+      "images": ["dining1.jpg", "dining2.jpg"],
+      "reviews": [
+        {
+          "id": 4,
+          "text": "Sturdy and spacious, great for dinners.",
+          "userId": 5,
+          "productId": 3
+        }
+      ],
+      "productDetails": [
+        {
+          "productId": 3,
+          "colors": ["natural wood", "dark wood"],
+          "materials": ["wood", "steel"],
+          "height": 75,
+          "width": 200,
+          "depth": 100,
+          "swivelMechanism": "No"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Leather Recliner",
+      "categoryId": 1,
+      "price": 499,
+      "discount": 20,
+      "description": "A plush leather recliner with built-in massage function.",
+      "images": ["recliner1.jpg", "recliner2.jpg"],
+      "reviews": [
+        {
+          "id": 5,
+          "text": "The massage feature is a game changer!",
+          "userId": 6,
+          "productId": 4
+        }
+      ],
+      "productDetails": [
+        {
+          "productId": 4,
+          "colors": ["black", "brown"],
+          "materials": ["leather", "foam"],
+          "height": 110,
+          "width": 90,
+          "depth": 95,
+          "swivelMechanism": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Art Deco Mirror",
+      "categoryId": 3,
+      "price": 120,
+      "discount": 5,
+      "description": "An elegant mirror with an Art Deco frame.",
+      "images": ["mirror1.jpg", "mirror2.jpg"],
+      "reviews": [
+        {
+          "id": 6,
+          "text": "Looks amazing above my fireplace.",
+          "userId": 7,
+          "productId": 5
+        }
+      ],
+      "productDetails": [
+        {
+          "productId": 5,
+          "colors": ["gold", "silver"],
+          "materials": ["glass", "metal"],
+          "height": 100,
+          "width": 50,
+          "depth": 5,
+          "swivelMechanism": "No"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Compact Office Desk",
+      "categoryId": 2,
+      "price": 199,
+      "discount": 10,
+      "description": "A small office desk perfect for home offices.",
+      "images": ["desk1.jpg", "desk2.jpg"],
+      "reviews": [
+        {
+          "id": 7,
+          "text": "Perfect size for my small home office.",
+          "userId": 8,
+          "productId": 6
+        }
+      ],
+      "productDetails": [
+        {
+          "productId": 6,
+          "colors": ["black", "oak"],
+          "materials": ["wood", "metal"],
+          "height": 75,
+          "width": 120,
+          "depth": 60,
+          "swivelMechanism": "No"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Stainless Steel Cookware Set",
+      "categoryId": 4,
+      "price": 149,
+      "discount": 25,
+      "description": "A high-quality stainless steel cookware set.",
+      "images": ["cookware1.jpg", "cookware2.jpg"],
+      "reviews": [
+        {
+          "id": 8,
+          "text": "Great for cooking, easy to clean.",
+          "userId": 9,
+          "productId": 7
+        }
+      ],
+      "productDetails": [
+        {
+          "productId": 7,
+          "colors": ["silver"],
+          "materials": ["stainless steel"],
+          "height": 20,
+          "width": 30,
+          "depth": 30,
+          "swivelMechanism": "No"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Decorative Throw Blanket",
+      "categoryId": 1,
+      "price": 59,
+      "discount": 15,
+      "description": "A cozy and stylish throw blanket for your couch.",
+      "images": ["blanket1.jpg", "blanket2.jpg"],
+      "reviews": [
+        {
+          "id": 9,
+          "text": "Perfect for the winter season.",
+          "userId": 10,
+          "productId": 8
+        }
+      ],
+      "productDetails": [
+        {
+          "productId": 8,
+          "colors": ["blue", "grey"],
+          "materials": ["cotton", "wool"],
+          "height": 150,
+          "width": 200,
+          "depth": 1,
+          "swivelMechanism": "No"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Outdoor Patio Set",
+      "categoryId": 5,
+      "price": 799,
+      "discount": 30,
+      "description": "A comfortable outdoor patio set with a sectional sofa.",
+      "images": ["patio1.jpg", "patio2.jpg"],
+      "reviews": [
+        {
+          "id": 10,
+          "text": "Perfect for my garden, very comfortable.",
+          "userId": 11,
+          "productId": 9
+        }
+      ],
+      "productDetails": [
+        {
+          "productId": 9,
+          "colors": ["grey", "beige"],
+          "materials": ["fabric", "metal", "rattan"],
+          "height": 85,
+          "width": 250,
+          "depth": 200,
+          "swivelMechanism": "No"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Smart LED Desk Lamp",
+      "categoryId": 2,
+      "price": 79,
+      "discount": 20,
+      "description": "A smart LED desk lamp with adjustable brightness.",
+      "images": ["lamp1.jpg", "lamp2.jpg"],
+      "reviews": [
+        {
+          "id": 11,
+          "text": "Great lighting for my study desk.",
+          "userId": 12,
+          "productId": 10
+        }
+      ],
+      "productDetails": [
+        {
+          "productId": 10,
+          "colors": ["white", "black"],
+          "materials": ["plastic", "metal"],
+          "height": 45,
+          "width": 20,
+          "depth": 20,
+          "swivelMechanism": "Yes"
+        }
+      ]
+    }
+  ]
+  

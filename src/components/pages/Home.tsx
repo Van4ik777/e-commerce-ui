@@ -1,14 +1,11 @@
-// TODO: Rename to Home.tsx
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { CiDiscount1 } from 'react-icons/ci';
 import { RiSofaLine } from 'react-icons/ri';
 import { TbTruckDelivery } from 'react-icons/tb';
 import { Link } from 'react-router-dom';
 import { ProductCard } from '@/components/molecules/ProductCard';
-import { Footer } from '@/components/organisms/Footer';
 import { Header } from '@/components/organisms/Header';
-import { Image } from '../atoms/Image';
-
+import { Image } from '@mantine/core';
 export function HomePage() {
   const productContainerRef = useRef<HTMLDivElement>(null);
   const newArrivalsContainerRef = useRef<HTMLDivElement>(null);
@@ -21,7 +18,7 @@ export function HomePage() {
       });
     }
   };
-
+  console.log('1')
   const scrollRight = (ref: React.RefObject<HTMLDivElement>) => {
     if (ref.current) {
       ref.current.scrollBy({
@@ -33,8 +30,6 @@ export function HomePage() {
 
   return (
     <>
-      <Header />
-
       <div
         style={{
           width: '600px',
@@ -452,7 +447,6 @@ export function HomePage() {
           →
         </button>
       </div>
-      <Footer />
     </>
   );
 }

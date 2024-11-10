@@ -3,8 +3,10 @@ import { AiOutlineHeart, AiOutlineStar } from 'react-icons/ai'; // Іконка 
 
 import { FaRegCommentDots } from 'react-icons/fa';
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
-import { Box, Button } from '@mantine/core';
+import { Box, Button, Image } from '@mantine/core';
 import { PAGES } from '@/constants/PAGES';
+import { useHover } from '@mantine/hooks';
+import { CustomButton } from '../atoms/buttons/CustomButton';
 
 interface ProductCardProps {
   imageSrc: string;
@@ -27,12 +29,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   productId,
   productType,
 }) => {
-  // TODO: https://mantine.dev/hooks/use-hover/
-  const [isHovered, setIsHovered] = useState(false);
+  const { hovered, ref } = useHover(); 
 
   return (
     <Link
-      to={`/product/${productType}/${productId}#comments`}
+      to={`/product/${productType}/${productId}`}
       style={{
         display: 'flex',
         alignItems: 'center',
@@ -41,8 +42,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         color: '#000',
       }}
     >
-      {/*  Use mantine components div --> Box, div with display flex --> Flex*/}
       <Box
+        ref={ref}
+        
+        
         style={{
           border: '1px solid #ddd',
           borderRadius: '8px',
@@ -52,21 +55,15 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           position: 'relative',
           overflow: 'hidden',
           transition: 'transform 0.3s ease, height 0.3s ease',
-          height: isHovered ? '550px' : '380px',
-          transform: isHovered ? 'translateY(0)' : 'none',
+          height: hovered ? '550px' : '380px',
+          transform: hovered ? 'translateY(0)' : 'none',
           transformOrigin: 'bottom',
         }}
         w="300px"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+
       >
-        {/*TODO: change height to fixed */}
-        {/*  TODO: Image from mantine*/}
-        <img
-          src={imageSrc}
-          alt={productName}
-          style={{ width: '100%', height: '250px', borderRadius: '8px' }}
-        />
+        <Image src={imageSrc} alt={productName} radius="md" height={250} />
+
 
         <div
           style={{
@@ -112,20 +109,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           {/* Кнопка лайка */}
         </div>
 
-        {isHovered && (
+        {hovered && (
           //   TODO: ))))))))))))))))))))))
           <>
-            <Button
-              style={{
-                marginTop: '20px',
-                backgroundColor: 'rgba(17, 17, 17, 1)',
-                color: '#fff',
-                width: '100%',
-                borderRadius: '8px',
-              }}
-            >
-              Add to Cart
-            </Button>
+          <CustomButton label={'Add to Cart'} />
 
             {/*  1(0), 2(1), 3(3), 4(4), 5(5)*/}
 
@@ -155,17 +142,16 @@ export const ProductCard: React.FC<ProductCardProps> = ({
                 marginTop: '8px',
               }}
             >
-              <Link
-                // use Pages in all cases
-                to={`${PAGES.product}/${productType}/${productId}#comments`}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '4px',
-                  textDecoration: 'none',
-                  color: '#000',
-                }}
-              >
+                  <Link
+                    to={`${PAGES.products(productType, productId)}#comments`}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '4px',
+                      textDecoration: 'none',
+                      color: '#000',
+                    }}
+                  >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                   <AiOutlineStar style={{ fontSize: '16px', color: '#000' }} /> {/* Іконка зірки */}
                   <span

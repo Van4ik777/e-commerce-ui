@@ -1,5 +1,6 @@
-import { MyButton } from '../atoms/buttons/MyButton';
-import { MyText } from '../atoms/text/MyText';
+import { CustomButton } from "../atoms/buttons/CustomButton";
+import { MyText } from "../atoms/text/MyText";
+
 
 interface ButtonWithTextProps {
   label: string;
@@ -11,7 +12,7 @@ export const ButtonWithText: React.FC<ButtonWithTextProps> = ({ label, content, 
   return (
     <div>
       <MyText content={content} />
-      <MyButton label={label} onClick={onClick} />
+      <CustomButton label={label} onClick={onClick} />
     </div>
   );
 };

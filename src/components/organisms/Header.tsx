@@ -5,35 +5,38 @@ import {
   AiOutlineShoppingCart,
   AiOutlineUser,
 } from 'react-icons/ai';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, redirect, useLocation } from 'react-router-dom';
 import {
   ActionIcon,
   Box,
-  Burger,
-  Container,
   Divider,
   Group,
-  MantineProvider,
   Text,
-  useMantineTheme,
 } from '@mantine/core';
 import { PAGES } from '@/constants/PAGES';
+import { CustomButton } from '../atoms/buttons/CustomButton';
 
-const pagesWithOutLinks = [PAGES.product, PAGES.catalog];
+const pagesWithOutLinks = [PAGES.product,'/product'];
 
 export const Header: React.FC = () => {
-  const [opened, setOpened] = useState(false);
   const [scrolling, setScrolling] = useState(false);
-  const theme = useMantineTheme();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const { pathname } = useLocation();
 
-  const currentPage = pathname.split('/')[1];
-  console.log(!pagesWithOutLinks.includes(currentPage));
-  // Додаємо ефект для відстеження прокрутки
+  const navLinks = [
+    { text: 'SALE', path: '/sale' },
+    { text: 'OFFLINE STORE', path: '/offline-store' },
+    { text: 'ABOUT US', path: '/about-us' },
+    { text: 'CALCULATOR', path: '/calculator' },
+    { text: 'CONTACTS', path: '/contacts' },
+  ];
+
+  const isPageWithoutLinks = pagesWithOutLinks.some(link => pathname.startsWith(link));
+
   useEffect(() => {
     const handleScroll = () => {
-      setScrolling(window.scrollY > 50); // Змінюємо стан scrolling, якщо прокрутка більше 50 пікселів
+      setScrolling(window.scrollY > 50); 
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -43,18 +46,23 @@ export const Header: React.FC = () => {
     };
   }, []);
 
+
+
   return (
+    <>
+    {!isPageWithoutLinks && (
+
     <div
       style={{
         position: 'fixed',
         top: 0,
         left: 0,
         right: 0,
-        backgroundColor: scrolling ? 'rgba(255, 255, 255, 0.9)' : 'transparent', // Змінюємо фон при прокрутці
+        backgroundColor: scrolling ? 'rgba(255, 255, 255, 0.9)' : 'transparent',
         transition: 'background-color 0.3s ease',
         zIndex: 1000,
-        padding: '10px 0', // Додаємо відступ
-        boxShadow: scrolling ? '0 2px 5px rgba(0, 0, 0, 0.1)' : 'none', // Додаємо тінь при прокрутці
+        padding: '10px 0',
+        boxShadow: scrolling ? '0 2px 5px rgba(0, 0, 0, 0.1)' : 'none',
       }}
     >
       <div style={{ marginTop: '20px', marginLeft: '80px', position: 'absolute' }}>
@@ -74,13 +82,11 @@ export const Header: React.FC = () => {
 
       <div style={{ marginLeft: '30vw', marginRight: '5vw' }}>
         <Group style={{ padding: '20px 0' }}>
-          {!pagesWithOutLinks.includes(`/${currentPage}`) && (
             <Group style={{ flex: 1, gap: '52px' }}>
-              {/*Create constant links*/}
-              {['SALE', 'OFFLINE STORE', 'ABOUT US', 'CALCULATOR', 'CONTACTS'].map((text) => (
+              {navLinks.map(({ text, path }) => (
                 <Box key={text} style={{ textAlign: 'center' }}>
                   <Link
-                    to={`/${text.toLowerCase().replace(/\s+/g, '-')}`}
+                    to={path}
                     style={{ textDecoration: 'none', color: 'inherit' }}
                   >
                     <Text
@@ -99,7 +105,7 @@ export const Header: React.FC = () => {
                 </Box>
               ))}
             </Group>
-          )}
+          
 
           <Group>
             <ActionIcon size="xl" variant="transparent" color="black">
@@ -108,9 +114,27 @@ export const Header: React.FC = () => {
             <ActionIcon size="xl" variant="transparent" color="black">
               <AiOutlineHeart style={{ fontSize: '32px' }} />
             </ActionIcon>
-            <ActionIcon size="xl" variant="transparent" color="black">
-              <AiOutlineUser style={{ fontSize: '32px' }} />
-            </ActionIcon>
+            {!isAuthenticated && (
+            <>
+              <Link to={PAGES.login}>
+                <CustomButton
+                  mystyles={{ zIndex: 1 }}
+                  label="Sign In"
+                />
+              </Link>
+              <Link to={PAGES.register}>
+                <CustomButton
+                  mystyles={{ zIndex: 1 }}
+                  label="Register"
+                />
+              </Link>
+            </>
+          )}
+        {isAuthenticated  && (
+          <ActionIcon size="xl" variant="transparent" color="black">
+            <AiOutlineUser style={{ fontSize: '32px' }} />
+          </ActionIcon>
+        )}
             <ActionIcon variant="transparent" color="black">
               <AiOutlineShoppingCart style={{ fontSize: '32px' }} />
             </ActionIcon>
@@ -119,5 +143,7 @@ export const Header: React.FC = () => {
         <Divider color="black" size="sm" />
       </div>
     </div>
+    )}
+    </>
   );
 };
