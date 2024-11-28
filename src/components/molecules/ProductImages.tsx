@@ -3,8 +3,8 @@ import React, { useState, useEffect, useMemo } from 'react';
 
 export const ProductImages: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<string>('https://via.placeholder.com/600?text=Product+Large');
+  console.log()
 
-  console.log('1')
 
   const productImages = useMemo(()=> [
     'https://via.placeholder.com/600?text=Product+0',

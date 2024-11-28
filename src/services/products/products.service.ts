@@ -1,12 +1,37 @@
 import { http } from "@/http/httpCient";
+import { Product } from "./products.types";
 
 class ProductsService{
-    public getOne(productId:number) {
-        
-    } 
-    public getAll(){
-        return http.get('/products.json').then(result=>result)
+    public async getAll() {
+        try {
+          const result = await http.get('/products.json');
+          return result.data;
+        } catch (error) {
+          console.error( error);
+          throw error;
+        }
+      }
+    public async getOneWithDetails(productId: number) {
+      try {
+        const result = await http.get('/products.json');
+        const products = result.data;
+        return products.find((product: Product) => product.id === productId);
+      } catch (error) {
+        console.error(error);
+        throw error;
+      }
     }
+    public async getNoDetails(productId: number) {
+      try {
+        const result = await http.get('/products.json');
+        const products = result.data;
+        return products.find((product: Product) => product.id === productId);
+      } catch (error) {
+        console.error(error);
+        throw error;
+      }
+    }
+    
 }
 
 export const productsService = new ProductsService()

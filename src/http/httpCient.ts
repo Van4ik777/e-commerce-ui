@@ -13,5 +13,11 @@ class HttpClient{
     public get(url:string, config?:AxiosRequestConfig){
         return this.api.get(url, config)
     }
+    public getOneWithDetails(url: string, productId: number, config?: AxiosRequestConfig) {
+        return this.api.get(url, config)
+    }
+    public getNoDetails(url:string, config?:AxiosRequestConfig){
+        return this.api.get(url, config)
+    }
 }
-export const http = new HttpClient(axios, '../data')
+export const http = new HttpClient(axios, '/src/data')

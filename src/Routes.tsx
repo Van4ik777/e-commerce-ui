@@ -6,7 +6,7 @@ import { Catalog } from './components/pages/Catalog';
 import { HomePage } from './components/pages/Home';
 import { ProductPage } from './components/pages/ProductPage';
 import { Login } from './components/pages/Login';
-import { Register } from './components/pages/register';
+import { Register } from './components/pages/Register';
 
 const AppRoutes = () => {
   return (

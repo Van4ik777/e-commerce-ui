@@ -5,7 +5,7 @@ import {
   AiOutlineShoppingCart,
   AiOutlineUser,
 } from 'react-icons/ai';
-import { Link, redirect, useLocation } from 'react-router-dom';
+import { Link,  useLocation } from 'react-router-dom';
 import {
   ActionIcon,
   Box,
@@ -65,7 +65,8 @@ export const Header: React.FC = () => {
         boxShadow: scrolling ? '0 2px 5px rgba(0, 0, 0, 0.1)' : 'none',
       }}
     >
-      <div style={{ marginTop: '20px', marginLeft: '80px', position: 'absolute' }}>
+      <Link to={PAGES.home}>
+      <div style={{ marginTop: '20px', marginLeft: '80px', position: 'absolute', color: 'black' }}>
         <div
           style={{
             marginTop: '12px',
@@ -79,7 +80,7 @@ export const Header: React.FC = () => {
           MOCHEL
         </div>
       </div>
-
+      </Link>
       <div style={{ marginLeft: '30vw', marginRight: '5vw' }}>
         <Group style={{ padding: '20px 0' }}>
             <Group style={{ flex: 1, gap: '52px' }}>

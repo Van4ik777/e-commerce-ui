@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { AiOutlineHeart, AiOutlineStar } from 'react-icons/ai'; // Іконка "лайка" і "зірки"
+import { AiOutlineHeart, AiOutlineStar } from 'react-icons/ai'; 
 
 import { FaRegCommentDots } from 'react-icons/fa';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { Link } from 'react-router-dom';
 import { Box, Button, Image } from '@mantine/core';
 import { PAGES } from '@/constants/PAGES';
 import { useHover } from '@mantine/hooks';
@@ -17,6 +17,7 @@ interface ProductCardProps {
   reviewsCount: number;
   productId: string;
   productType: string;
+  mystyles?: React.CSSProperties;
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({
@@ -28,6 +29,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   reviewsCount,
   productId,
   productType,
+  mystyles,
 }) => {
   const { hovered, ref } = useHover(); 
 
@@ -58,6 +60,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           height: hovered ? '550px' : '380px',
           transform: hovered ? 'translateY(0)' : 'none',
           transformOrigin: 'bottom',
+          ...mystyles,
+
         }}
         w="300px"
 
@@ -106,15 +110,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               marginBottom: '20px',
             }}
           />{' '}
-          {/* Кнопка лайка */}
         </div>
 
         {hovered && (
-          //   TODO: ))))))))))))))))))))))
           <>
-          <CustomButton label={'Add to Cart'} />
-
-            {/*  1(0), 2(1), 3(3), 4(4), 5(5)*/}
+          <CustomButton label={'Add to Cart'} mystyles={{width: '200px',}}/>
 
             <div style={{ marginTop: '10px', textAlign: 'left' }}>
               <p style={{ fontSize: '14px', color: '#666', fontWeight: 400 }}>In Stock</p>
@@ -153,7 +153,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
                     }}
                   >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  <AiOutlineStar style={{ fontSize: '16px', color: '#000' }} /> {/* Іконка зірки */}
+                  <AiOutlineStar style={{ fontSize: '16px', color: '#000' }} />
                   <span
                     style={{
                       fontFamily: 'Roboto',

@@ -6,17 +6,23 @@
       "price": 299,
       "discount": 10,
       "description": "A comfortable and stylish leather chair for your living room.",
-      "images": ["image1.jpg", "image2.jpg"],
+      "images": ["image1.jpg", "image2.jpg","image3.jpg", "image4.jpg"],
+      "liked": false,
+      "favorite": false,
       "reviews": [
         {
           "id": 1,
           "text": "Great quality and very comfortable.",
+          "liked": false,
+          "likes": 10,
           "userId": 2,
           "productId": 1
         },
         {
           "id": 2,
           "text": "The leather is soft and luxurious.",
+          "liked": false,
+          "likes": 10,
           "userId": 3,
           "productId": 1
         }
@@ -40,7 +46,9 @@
       "price": 899,
       "discount": 15,
       "description": "A sleek and modern sofa set for contemporary homes.",
-      "images": ["sofa1.jpg", "sofa2.jpg"],
+      "images": ["image1.jpg", "image2.jpg","image3.jpg", "image4.jpg"],
+      "liked": false,
+      "favorite": false,
       "reviews": [
         {
           "id": 3,
@@ -68,7 +76,7 @@
       "price": 499,
       "discount": 5,
       "description": "A large wooden dining table perfect for family gatherings.",
-      "images": ["dining1.jpg", "dining2.jpg"],
+      "images": ["image1.jpg", "image2.jpg","image3.jpg", "image4.jpg"],
       "reviews": [
         {
           "id": 4,
@@ -96,7 +104,7 @@
       "price": 499,
       "discount": 20,
       "description": "A plush leather recliner with built-in massage function.",
-      "images": ["recliner1.jpg", "recliner2.jpg"],
+      "images": ["image1.jpg", "image2.jpg","image3.jpg", "image4.jpg"],
       "reviews": [
         {
           "id": 5,
@@ -124,7 +132,7 @@
       "price": 120,
       "discount": 5,
       "description": "An elegant mirror with an Art Deco frame.",
-      "images": ["mirror1.jpg", "mirror2.jpg"],
+      "images": ["image1.jpg", "image2.jpg","image3.jpg", "image4.jpg"],
       "reviews": [
         {
           "id": 6,
@@ -152,7 +160,7 @@
       "price": 199,
       "discount": 10,
       "description": "A small office desk perfect for home offices.",
-      "images": ["desk1.jpg", "desk2.jpg"],
+      "images": ["image1.jpg", "image2.jpg","image3.jpg", "image4.jpg"],
       "reviews": [
         {
           "id": 7,
@@ -180,7 +188,7 @@
       "price": 149,
       "discount": 25,
       "description": "A high-quality stainless steel cookware set.",
-      "images": ["cookware1.jpg", "cookware2.jpg"],
+      "images": ["image1.jpg", "image2.jpg","image3.jpg", "image4.jpg"],
       "reviews": [
         {
           "id": 8,
@@ -208,7 +216,7 @@
       "price": 59,
       "discount": 15,
       "description": "A cozy and stylish throw blanket for your couch.",
-      "images": ["blanket1.jpg", "blanket2.jpg"],
+      "images": ["image1.jpg", "image2.jpg","image3.jpg", "image4.jpg"],
       "reviews": [
         {
           "id": 9,
@@ -236,7 +244,7 @@
       "price": 799,
       "discount": 30,
       "description": "A comfortable outdoor patio set with a sectional sofa.",
-      "images": ["patio1.jpg", "patio2.jpg"],
+      "images": ["image1.jpg", "image2.jpg","image3.jpg", "image4.jpg"],
       "reviews": [
         {
           "id": 10,
@@ -264,7 +272,7 @@
       "price": 79,
       "discount": 20,
       "description": "A smart LED desk lamp with adjustable brightness.",
-      "images": ["lamp1.jpg", "lamp2.jpg"],
+      "images": ["image1.jpg", "image2.jpg","image3.jpg", "image4.jpg"],
       "reviews": [
         {
           "id": 11,
