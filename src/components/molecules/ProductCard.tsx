@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { AiOutlineHeart, AiOutlineStar } from 'react-icons/ai'; 
-
+import { AiOutlineHeart, AiOutlineStar } from 'react-icons/ai';
 import { FaRegCommentDots } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { Box, Button, Image } from '@mantine/core';
-import { PAGES } from '@/constants/PAGES';
 import { useHover } from '@mantine/hooks';
+import { PAGES } from '@/constants/PAGES';
 import { CustomButton } from '../atoms/buttons/CustomButton';
 
 interface ProductCardProps {
@@ -31,7 +30,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   productType,
   mystyles,
 }) => {
-  const { hovered, ref } = useHover(); 
+  const { hovered, ref } = useHover();
 
   return (
     <Link
@@ -46,8 +45,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     >
       <Box
         ref={ref}
-        
-        
         style={{
           border: '1px solid #ddd',
           borderRadius: '8px',
@@ -61,13 +58,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           transform: hovered ? 'translateY(0)' : 'none',
           transformOrigin: 'bottom',
           ...mystyles,
-
         }}
         w="300px"
-
       >
         <Image src={imageSrc} alt={productName} radius="md" height={250} />
-
 
         <div
           style={{
@@ -114,7 +108,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
         {hovered && (
           <>
-          <CustomButton label={'Add to Cart'} mystyles={{width: '200px',}}/>
+            <CustomButton label={'Add to Cart'} mystyles={{ width: '200px' }} />
 
             <div style={{ marginTop: '10px', textAlign: 'left' }}>
               <p style={{ fontSize: '14px', color: '#666', fontWeight: 400 }}>In Stock</p>
@@ -142,16 +136,16 @@ export const ProductCard: React.FC<ProductCardProps> = ({
                 marginTop: '8px',
               }}
             >
-                  <Link
-                    to={`${PAGES.products(productType, productId)}#comments`}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '4px',
-                      textDecoration: 'none',
-                      color: '#000',
-                    }}
-                  >
+              <Link
+                to={`${PAGES.products(productType, productId)}#comments`}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '4px',
+                  textDecoration: 'none',
+                  color: '#000',
+                }}
+              >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                   <AiOutlineStar style={{ fontSize: '16px', color: '#000' }} />
                   <span

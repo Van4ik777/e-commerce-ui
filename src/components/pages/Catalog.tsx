@@ -1,80 +1,87 @@
-import { PAGES } from "@/constants/PAGES";
+import { useEffect, useState } from 'react';
+import { meta } from 'eslint-plugin-react/lib/rules/jsx-props-no-spread-multi';
+import { useQuery } from 'react-query';
 import {
   Anchor,
   Box,
   Breadcrumbs,
-  Group,
-  Text,
   Checkbox,
-  Slider,
   Collapse,
+  Group,
   Pagination,
   SimpleGrid,
-} from "@mantine/core";
-import { useState } from "react";
-import { Filtercard } from "../molecules/Filtercard";
-import { ProductCard } from "../molecules/ProductCard";
-import { useQuery } from "react-query";
-import { productsService } from "@/services/products/products.service";
+  Text,
+} from '@mantine/core';
+import { PAGES } from '@/constants/PAGES';
+import { productsService } from '@/services/products/products.service';
+import { Filtercard } from '../molecules/Filtercard';
+import { ProductCard } from '../molecules/ProductCard';
+
+const menuItems = [
+  'All',
+  'Tables',
+  'Chairs',
+  'Armchairs',
+  'Sofas',
+  'Shelves',
+  'Decor',
+  'Carpets',
+  'Lighting',
+];
+
+const additionalFilters = [
+  'Wood',
+  'Metal',
+  'Plastic',
+  'Modern',
+  'Vintage',
+  'Glass',
+  'Fabric',
+  'Leather',
+  'Stone',
+  'Concrete',
+];
 
 export function Catalog() {
+  // TODO: useMEmo
   const items = [
-    { title: "Main page", href: PAGES.home },
-    { title: "Catalog", href: PAGES.catalog },
+    { title: 'Main page', href: PAGES.home },
+    { title: 'Catalog', href: PAGES.catalog },
   ].map((item, index) => (
     <Anchor href={item.href} key={index}>
       {item.title}
     </Anchor>
   ));
 
-  const { data: productsData } = useQuery("products", productsService.getAll);
+  const { data: productsData } = useQuery('products', productsService.getAll);
   const productsArray = Array.isArray(productsData) ? productsData : [];
 
-  const [active, setActive] = useState("All");
+  // const [categories, setCategories] = useState(['All']);
+  // // [all, ...]
+  // const { data: categorys, isSuccess, isFetching } = useQuery('products', productsService.getAll);
+  //
+  // useEffect(() => {
+  //   if (isSuccess) {
+  //     setCategories((prevState) => [...prevState, [...categorys?.map((category) => category.name))]);
+  //   }
+  // }, [isFetching])
+
+  const [active, setActive] = useState(menuItems);
   const [filters, setFilters] = useState<string[]>([]);
   const [openMaterials, setOpenMaterials] = useState(false);
   const [activePage, setActivePage] = useState(1);
-  console.log(productsArray)
+  console.log(productsArray);
 
   const itemsPerPage = 9;
   const totalItems = productsData?.length || 0;
   const totalPages = Math.ceil(totalItems / itemsPerPage);
-  console.log(totalPages)
-
-  const menuItems = [
-    "All",
-    "Tables",
-    "Chairs",
-    "Armchairs",
-    "Sofas",
-    "Shelves",
-    "Decor",
-    "Carpets",
-    "Lighting",
-  ];
-
-  const additionalFilters = [
-    "Wood",
-    "Metal",
-    "Plastic",
-    "Modern",
-    "Vintage",
-    "Glass",
-    "Fabric",
-    "Leather",
-    "Stone",
-    "Concrete",
-  ];
-
+  console.log(totalPages);
 
   const toggleFilter = (filter: string) => {
     setFilters(
-      filters.includes(filter)
-        ? filters.filter((f) => f !== filter)
-        : [...filters, filter]
+      filters.includes(filter) ? filters.filter((f) => f !== filter) : [...filters, filter]
     );
   };
-
 
   return (
     <>
@@ -83,16 +90,16 @@ export function Catalog() {
       </Breadcrumbs>
       <div
         style={{
-          fontFamily: "Roboto",
-          fontSize: "34px",
+          fontFamily: 'Roboto',
+          fontSize: '34px',
           fontWeight: 700,
-          color: "black",
-          margin: "50px 0 20px 80px",
+          color: 'black',
+          margin: '50px 0 20px 80px',
         }}
       >
         CATALOG
       </div>
-      <Group w={"100vw"} ml={5} mt={25}>
+      <Group w={'100vw'} ml={5} mt={25}>
         {menuItems.map((item) => (
           <Anchor
             key={item}
@@ -101,11 +108,11 @@ export function Catalog() {
               toggleFilter(item);
             }}
             style={{
-              fontSize: "18px",
-              fontWeight: active === item ? "bold" : "normal",
-              textDecoration: active === item ? "underline" : "none",
-              cursor: "pointer",
-              marginLeft: "5vw",
+              fontSize: '18px',
+              fontWeight: active === item ? 'bold' : 'normal',
+              textDecoration: active === item ? 'underline' : 'none',
+              cursor: 'pointer',
+              marginLeft: '5vw',
             }}
           >
             {item}
@@ -113,60 +120,63 @@ export function Catalog() {
         ))}
       </Group>
 
-      <div style={{ marginTop: "50px", marginLeft: "80px", display: "flex" }}>
-        <div style={{ marginRight: "50px" }}>
-          <Text style={{ fontSize: "32px", fontWeight: 700, color: "black", marginBottom: "10px" }}>
+      <div style={{ marginTop: '50px', marginLeft: '80px', display: 'flex' }}>
+        <div style={{ marginRight: '50px' }}>
+          <Text style={{ fontSize: '32px', fontWeight: 700, color: 'black', marginBottom: '10px' }}>
             Filter by
           </Text>
 
           <Text
-            style={{ fontSize: "28px", fontWeight: 500, color: "black", cursor: "pointer", marginBottom: "10px" }}
+            style={{
+              fontSize: '28px',
+              fontWeight: 500,
+              color: 'black',
+              cursor: 'pointer',
+              marginBottom: '10px',
+            }}
             onClick={() => setOpenMaterials(!openMaterials)}
             ml={10}
           >
-
-            Materials 
+            Materials
           </Text>
           <Collapse in={openMaterials}>
-            <div style={{ marginTop: "20px", marginLeft: "30px", gap: "5px" }}>
+            <div style={{ marginTop: '20px', marginLeft: '30px', gap: '5px' }}>
               {additionalFilters.map((filter, index) => (
                 <Checkbox
                   key={index}
                   label={filter}
                   checked={filters.includes(filter)}
                   onChange={() => toggleFilter(filter)}
-                  style={{ margin: "5px 0", marginTop: "15px" }}
-                  size="lg" 
+                  style={{ margin: '5px 0', marginTop: '15px' }}
+                  size="lg"
                 />
               ))}
             </div>
           </Collapse>
-
-
         </div>
 
         <div style={{ flex: 1 }}>
-          <Group style={{ marginBottom: "20px" }}>
+          <Group style={{ marginBottom: '20px' }}>
             {filters.map((filter, index) => (
               <Filtercard key={index} label={filter} onClick={() => toggleFilter(filter)} />
             ))}
           </Group>
 
           <SimpleGrid
-              cols={3}
-              spacing="lg"
-              style={{
-                margin: '0 auto',
-                maxWidth: '1200px', 
-              }}
-            >              
+            cols={3}
+            spacing="lg"
+            style={{
+              margin: '0 auto',
+              maxWidth: '1200px',
+            }}
+          >
             {productsArray
-                .slice((activePage - 1) * itemsPerPage, activePage * itemsPerPage)
-                .map((product) => (
-                  <Box w={300}>
+              .slice((activePage - 1) * itemsPerPage, activePage * itemsPerPage)
+              .map((product) => (
+                <Box w={300}>
                   <ProductCard
                     key={product.id}
-                    imageSrc={product.images[0]} 
+                    imageSrc={product.images[0]}
                     productName={product.name}
                     price={`$${product.price}`}
                     colors={product.productDetails[0]?.colors || []}
@@ -174,16 +184,15 @@ export function Catalog() {
                     reviewsCount={product.reviews?.length || 0}
                     productId={product.id}
                     productType={active}
-                    mystyles={{width: '300px'}}
+                    mystyles={{ width: '300px' }}
                   />
-                  </Box>
-                  
-                ))}
+                </Box>
+              ))}
           </SimpleGrid>
           <Pagination
             onChange={setActivePage}
             total={totalPages}
-            style={{ marginTop: "30px", display: "flex", justifyContent: "center" }}
+            style={{ marginTop: '30px', display: 'flex', justifyContent: 'center' }}
             mr={100}
             mb={100}
             mt={50}
