@@ -4,7 +4,7 @@ import { Product } from './products.types';
 class ProductsService {
   public async getAll() {
     try {
-      const result = await http.get('/products.json');
+      const result = await http.get('/products/products/');
       return result.data;
     } catch (error) {
       console.error(error);
@@ -12,20 +12,10 @@ class ProductsService {
     }
   }
   public async getOneWithDetails(productId: number) {
-    const result = await http.get('/products.json');
-    const products = result.data;
-    return products.find((product: Product) => product.id === productId);
+    const result = await http.get(`/products/product-details/${productId}`);
+    return result.data
   }
-  public async getNoDetails(productId: number) {
-    try {
-      const result = await http.get('/products.json');
-      const products = result.data;
-      return products.find((product: Product) => product.id === productId);
-    } catch (error) {
-      console.error(error);
-      throw error;
-    }
-  }
+  
 }
 
 export const productsService = new ProductsService();

@@ -4,11 +4,14 @@ import { RiSofaLine } from 'react-icons/ri';
 import { TbTruckDelivery } from 'react-icons/tb';
 import { Link } from 'react-router-dom';
 import { ProductCard } from '@/components/molecules/ProductCard';
-import { Header } from '@/components/organisms/Header';
 import { Image } from '@mantine/core';
+import { useAuth } from '@/store/auth.store';
+
 export function HomePage() {
   const productContainerRef = useRef<HTMLDivElement>(null);
   const newArrivalsContainerRef = useRef<HTMLDivElement>(null);
+  const {isAuth, login} = useAuth()
+
 
   const scrollLeft = (ref: React.RefObject<HTMLDivElement>) => {
     if (ref.current) {

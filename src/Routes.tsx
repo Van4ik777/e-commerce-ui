@@ -5,8 +5,7 @@ import { PAGES } from '@/constants/PAGES';
 import { Catalog } from './components/pages/Catalog';
 import { HomePage } from './components/pages/Home';
 import { ProductPage } from './components/pages/ProductPage';
-import { Login } from './components/pages/Login';
-import { Register } from './components/pages/Register';
+import { WaitForEmail } from './components/pages/WaitForEmail';
 
 const AppRoutes = () => {
   return (
@@ -18,8 +17,7 @@ const AppRoutes = () => {
             <Route path={PAGES.catalog} element={<Catalog />} />
             <Route path={PAGES.calculator} element={<h1>123</h1>} />
             <Route path={PAGES.products()} element={<ProductPage />} />
-            <Route path= {PAGES.login} element={<Login/>} />
-            <Route path= {PAGES.register} element={<Register/>} />
+            <Route path={PAGES.checkEmail} element={<WaitForEmail />} />
           </Route>
         </Routes>
       </BrowserRouter>

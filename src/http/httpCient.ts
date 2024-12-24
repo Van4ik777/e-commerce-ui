@@ -13,11 +13,8 @@ class HttpClient{
     public get(url:string, config?:AxiosRequestConfig){
         return this.api.get(url, config)
     }
-    public getOneWithDetails(url: string, productId: number, config?: AxiosRequestConfig) {
-        return this.api.get(url, config)
-    }
-    public getNoDetails(url:string, config?:AxiosRequestConfig){
-        return this.api.get(url, config)
+    public post(url: string, data: any, config?: AxiosRequestConfig) {
+        return this.api.post(url, data, config);  
     }
 }
-export const http = new HttpClient(axios, '/src/data')
+export const http = new HttpClient(axios, 'http://localhost:8010')

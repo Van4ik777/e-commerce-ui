@@ -1,6 +1,4 @@
-import { useEffect, useState } from 'react';
-import { meta } from 'eslint-plugin-react/lib/rules/jsx-props-no-spread-multi';
-import { useQuery } from 'react-query';
+import { useEffect, useMemo, useState } from 'react';
 import {
   Anchor,
   Box,
@@ -16,6 +14,7 @@ import { PAGES } from '@/constants/PAGES';
 import { productsService } from '@/services/products/products.service';
 import { Filtercard } from '../molecules/Filtercard';
 import { ProductCard } from '../molecules/ProductCard';
+import { useQuery } from '@tanstack/react-query';
 
 const menuItems = [
   'All',
@@ -43,48 +42,40 @@ const additionalFilters = [
 ];
 
 export function Catalog() {
-  // TODO: useMEmo
-  const items = [
-    { title: 'Main page', href: PAGES.home },
-    { title: 'Catalog', href: PAGES.catalog },
-  ].map((item, index) => (
-    <Anchor href={item.href} key={index}>
-      {item.title}
-    </Anchor>
-  ));
+  const items = useMemo(
+    () =>
+      [
+        { title: 'Main page', href: PAGES.home },
+        { title: 'Catalog', href: PAGES.catalog },
+      ].map((item) => (
+        <Anchor href={item.href} key={item.title}>
+          {item.title}
+        </Anchor>
+      )),
+    []
+  );
 
-  const { data: productsData } = useQuery('products', productsService.getAll);
+  const { data: productsData,isLoading,  isFetching  } = useQuery({queryKey:['products'],queryFn: productsService.getAll,staleTime:60000});
   const productsArray = Array.isArray(productsData) ? productsData : [];
-
-  // const [categories, setCategories] = useState(['All']);
-  // // [all, ...]
-  // const { data: categorys, isSuccess, isFetching } = useQuery('products', productsService.getAll);
-  //
-  // useEffect(() => {
-  //   if (isSuccess) {
-  //     setCategories((prevState) => [...prevState, [...categorys?.map((category) => category.name))]);
-  //   }
-  // }, [isFetching])
-
-  const [active, setActive] = useState(menuItems);
+  const [active, setActive] = useState<string>('All');
   const [filters, setFilters] = useState<string[]>([]);
   const [openMaterials, setOpenMaterials] = useState(false);
   const [activePage, setActivePage] = useState(1);
-  console.log(productsArray);
 
   const itemsPerPage = 9;
   const totalItems = productsData?.length || 0;
   const totalPages = Math.ceil(totalItems / itemsPerPage);
-  console.log(totalPages);
 
   const toggleFilter = (filter: string) => {
     setFilters(
       filters.includes(filter) ? filters.filter((f) => f !== filter) : [...filters, filter]
     );
   };
+  if (isFetching) return <div>Loading...</div>;
 
   return (
     <>
+    
       <Breadcrumbs mt={150} ml={80}>
         {items}
       </Breadcrumbs>
@@ -143,7 +134,7 @@ export function Catalog() {
             <div style={{ marginTop: '20px', marginLeft: '30px', gap: '5px' }}>
               {additionalFilters.map((filter, index) => (
                 <Checkbox
-                  key={index}
+                  key={filter}
                   label={filter}
                   checked={filters.includes(filter)}
                   onChange={() => toggleFilter(filter)}
@@ -158,7 +149,7 @@ export function Catalog() {
         <div style={{ flex: 1 }}>
           <Group style={{ marginBottom: '20px' }}>
             {filters.map((filter, index) => (
-              <Filtercard key={index} label={filter} onClick={() => toggleFilter(filter)} />
+              <Filtercard key={filter} label={filter} onClick={() => toggleFilter(filter)} />
             ))}
           </Group>
 
@@ -173,13 +164,12 @@ export function Catalog() {
             {productsArray
               .slice((activePage - 1) * itemsPerPage, activePage * itemsPerPage)
               .map((product) => (
-                <Box w={300}>
+                <Box w={300} key={product.name}>
                   <ProductCard
-                    key={product.id}
-                    imageSrc={product.images[0]}
+                    imageSrc={product.images ? product.images[0] : null} 
                     productName={product.name}
                     price={`$${product.price}`}
-                    colors={product.productDetails[0]?.colors || []}
+                    colors={product.productDetails?.[0]?.colors || []} 
                     rating={product.reviews?.length || 0}
                     reviewsCount={product.reviews?.length || 0}
                     productId={product.id}
