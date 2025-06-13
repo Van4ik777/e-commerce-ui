@@ -51,7 +51,9 @@ export const useAuth= create<AuthStore>((set)=>({
     getToken: async (username: string, password: string) => {
         try {
             const response = await authService.getToken({username, password});
-            return response.data;
+            cookies.set('auth-token',response.token.access)
+            cookies.set('refresh-token',response.token.refresh)
+            return response.data
         } catch (error) {
             console.error('Error fetching tokens', error);
         }
@@ -59,6 +61,8 @@ export const useAuth= create<AuthStore>((set)=>({
     checkEmail: async (uuid: string, token: string) => {
         try{
             const response = await authService.checkEmail({uuid, token})
+            cookies.set('auth-token',response.token.access)
+            cookies.set('refresh-token',response.token.refresh)
             return response.data
         }catch(error){
             console.error('Error checking email', error);

@@ -41,7 +41,7 @@ export const ProductPage: React.FC = () => {
       productId && { title: `Product ${productId}`, href: '#' },
     ].filter(Boolean);
 
-    return itemList.map((item) => (
+    return itemList.map((item: any) => (
       <Anchor component={Link} to={item.href} key={item.title} style={{ fontSize: '24px' }}>
         {item.title}
       </Anchor>

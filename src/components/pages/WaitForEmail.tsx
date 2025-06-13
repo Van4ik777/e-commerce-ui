@@ -4,18 +4,19 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { PAGES } from '@/constants/PAGES';
 
 export const WaitForEmail: React.FC = () => {
-  const [isConfirmed, setIsConfirmed] = useState(false);
+  const [isConfirmed, setIsConfirmed] = useState(false)
   const {checkEmail}= useAuth()
-  const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
-  const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
-    const userId = searchParams.get('userid');
-    const hash = searchParams.get('hash');
+    const userId = searchParams.get('userid')
+    const hash = searchParams.get('hash')
     if (userId && hash) {
       try{
         checkEmail(userId,hash)
+        setIsConfirmed(true)
       }catch(error){setError('wrong data try again alter')}
     }else {
       setError('Invalid URL parameters');
@@ -24,9 +25,9 @@ export const WaitForEmail: React.FC = () => {
   
   useEffect(() => {
     if (isConfirmed) {
-      navigate(PAGES.home); 
+      navigate(PAGES.home)
     }
-  }, [isConfirmed, navigate]);
+  }, [isConfirmed, navigate])
   
   return (
     <div>

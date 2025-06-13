@@ -1,10 +1,9 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { CiDiscount1 } from 'react-icons/ci';
 import { RiSofaLine } from 'react-icons/ri';
 import { TbTruckDelivery } from 'react-icons/tb';
 import { Link } from 'react-router-dom';
 import { ProductCard } from '@/components/molecules/ProductCard';
-import { Image } from '@mantine/core';
 import { useAuth } from '@/store/auth.store';
 
 export function HomePage() {
@@ -137,7 +136,7 @@ export function HomePage() {
                 marginBottom: '100px',
               }}
             >
-              <Image src="src/assets/images/image.png" alt="image" width="600px" height="740px" />
+              <img src='src/assets/images/image.png' alt="image" width="600px" height="740px" />
             </div>
 
             <div
@@ -151,7 +150,7 @@ export function HomePage() {
                 marginBottom: '400px',
               }}
             >
-              <Image src="src/assets/images/image2.png" alt="image" width="600px" height="441px" />
+              <img src="src/assets/images/image2.png" alt="image" width="600px" height="441px" />
             </div>
 
             <div

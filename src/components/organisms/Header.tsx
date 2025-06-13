@@ -18,6 +18,9 @@ import {
 } from '@mantine/core';
 import { PAGES } from '@/constants/PAGES';
 import { useAuth } from '@/store/auth.store';
+import { useNavigate } from 'react-router-dom';
+import { Card } from '../molecules/card';
+
 
 const pagesWithOutLinks = [PAGES.product, '/product'];
 
@@ -28,6 +31,8 @@ export const Header = () => {
   const { isAuth, register,login } = useAuth();
   const [opened, setOpened] = useState(false);
   const [myError, setMyError]=useState('')
+  const navigate = useNavigate();
+  const [cartOpened, setCartOpened] = useState(false);
   const [FormData, setFormData] = useState({
     email:'',
     username:'',
@@ -41,7 +46,7 @@ export const Header = () => {
     { text: 'CALCULATOR', path: '/calculator' },
     { text: 'CONTACTS', path: '/contacts' },
   ];
-
+  console.log(isAuth)
   const isPageWithoutLinks = pagesWithOutLinks.some((link) => pathname.startsWith(link));
 
   useEffect(() => {
@@ -66,7 +71,9 @@ export const Header = () => {
     }
     setMyError('')
     register(FormData)
+    navigate(PAGES.home); 
   }
+
   const handleChange = (field: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...FormData, [field]: event.target.value });
   };
@@ -91,6 +98,7 @@ export const Header = () => {
             boxShadow: scrolling ? '0 2px 5px rgba(0, 0, 0, 0.1)' : 'none',
           }}
         >
+          <Card opened={cartOpened} onClose={() => setCartOpened(false)} />
           <Link to={PAGES.home}>
             <div
               style={{
@@ -262,14 +270,16 @@ export const Header = () => {
                     <AiOutlineUser style={{ fontSize: '32px' }} />
                   </ActionIcon>
                 )}
-                <ActionIcon variant="transparent" color="black">
+                <ActionIcon variant="transparent" color="black" onClick={() => setCartOpened(true)}>
                   <AiOutlineShoppingCart style={{ fontSize: '32px' }} />
                 </ActionIcon>
               </Group>
             </Group>
             <Divider color="black" size="sm" />
           </div>
+          
         </div>
+        
       )}
     </>
   );
