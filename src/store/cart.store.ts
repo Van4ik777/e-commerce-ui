@@ -16,6 +16,7 @@ interface CartStore {
   addItem: (item: CartItem) => void;
   removeItem: (id: string) => void;
   clearCart: () => void;
+  updateItemQuantity: (id: string, quantity: number) => void
 }
 
 export const useCart = create<CartStore>((set, get) => ({
@@ -47,4 +48,12 @@ export const useCart = create<CartStore>((set, get) => ({
     cookies.remove('cart');
     set({ items: [] });
   },
+  updateItemQuantity: (id: string, quantity: number) => {
+  const updatedItems = get().items.map((item) =>
+    item.id === id ? { ...item, quantity } : item
+  );
+  cookies.set('cart', updatedItems);
+  set({ items: updatedItems });
+  },
+
 }));

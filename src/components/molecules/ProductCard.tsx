@@ -44,7 +44,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     });
 
     setAdded(true);
-    setTimeout(() => setAdded(false), 1500); 
   };
 
   return (

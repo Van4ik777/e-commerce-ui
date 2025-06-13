@@ -8,7 +8,7 @@ interface AuthStore {
     isAuth: boolean;
     setAuth: (isAuth: boolean) => void;
     register: (data:{email: string, username: string, password: string}) => void;
-    login: (username: string, password: string) => void;
+    login: (data: { email: string; password: string }) => void;
     logout: () => void;
     getToken: (username: string, password: string) => void;
     checkEmail: (uuid: string, hash: string) => void;
@@ -34,14 +34,15 @@ export const useAuth= create<AuthStore>((set)=>({
         }
     },
 
-    login: async (username: string, password: string) => {
+    login: async ({ email, password }) => {
         try {
-            const response = await authService.login({username, password});
+            const response = await authService.login({ username: email, password });
             set({ isAuth: true });
         } catch (error) {
             console.error('Login failed', error);
         }
     },
+
 
     logout: () => {
         cookies.remove('auth_token');

@@ -1,8 +1,11 @@
 import {Box,  Image, SimpleGrid } from '@mantine/core';
 import React, { useState, useEffect, useMemo } from 'react';
 
-export const ProductImages: React.FC = () => {
-  const [selectedImage, setSelectedImage] = useState<string>('https://via.placeholder.com/600?text=Product+Large');
+interface ProductImagesProps {
+  images: any; 
+}
+export const ProductImages: React.FC<ProductImagesProps> = ({ images }) => {
+ const [selectedImage, setSelectedImage] = useState<string>('https://via.placeholder.com/600?text=Product+Large');
   console.log()
 
 
