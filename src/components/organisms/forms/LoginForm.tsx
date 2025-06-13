@@ -2,10 +2,23 @@ import React from 'react';
 import { Box, Button, Text, TextInput } from '@mantine/core';
 
 interface LoginFormProps {
+  formData: {
+    email: string;
+    username?: string;
+    password: string;
+    confirmPassword?: string;
+  };
+  onChange: (field: string) => (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onLogin: () => void;
   onSwitchToRegister: () => void;
 }
 
-export const LoginForm: React.FC<LoginFormProps> = ({ onSwitchToRegister }) => {
+export const LoginForm: React.FC<LoginFormProps> = ({
+  formData,
+  onChange,
+  onLogin,
+  onSwitchToRegister,
+}) => {
   return (
     <Box>
       <TextInput
@@ -13,6 +26,8 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onSwitchToRegister }) => {
         placeholder="Enter your email or name"
         radius="md"
         mb="md"
+        value={formData.email}
+        onChange={onChange('email')}
       />
       <TextInput
         label="Password"
@@ -20,8 +35,10 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onSwitchToRegister }) => {
         type="password"
         radius="md"
         mb="lg"
+        value={formData.password}
+        onChange={onChange('password')}
       />
-      <Button fullWidth color="gray" radius="md" mb="sm">
+      <Button fullWidth color="gray" radius="md" mb="sm" onClick={onLogin}>
         Log In
       </Button>
       <Text mt="md">
