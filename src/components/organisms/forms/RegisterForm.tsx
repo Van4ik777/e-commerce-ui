@@ -28,7 +28,6 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
         mb="md"
         value={formData.username}
         onChange={onChange('username')}
-        styles={{ input: { backgroundColor: '#222', color: '#fff' } }}
       />
       <TextInput
         label="Email"
@@ -37,7 +36,6 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
         mb="md"
         value={formData.email}
         onChange={onChange('email')}
-        styles={{ input: { backgroundColor: '#222', color: '#fff' } }}
       />
       <TextInput
         label="Password"
@@ -47,7 +45,6 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
         mb="md"
         value={formData.password}
         onChange={onChange('password')}
-        styles={{ input: { backgroundColor: '#222', color: '#fff' } }}
       />
       <TextInput
         label="Confirm Password"
@@ -57,7 +54,6 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
         mb="lg"
         value={formData.confirmPassword}
         onChange={onChange('confirmPassword')}
-        styles={{ input: { backgroundColor: '#222', color: '#fff' } }}
       />
 
       <Button fullWidth color="gray" radius="md" mb="sm" onClick={onRegister}>
